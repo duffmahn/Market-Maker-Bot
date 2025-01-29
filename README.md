@@ -106,36 +106,18 @@ The bot will use machine learning-based strategies to improve its decision-makin
 
 Note the code is for demonstration purposes only and is not battle tested in a production environment.
 
-# Setting up the Uniswap Market Maker Trading Bot
+# Testing the Bot
 
-To set up the Uniswap market maker trading bot, follow these steps:
+The bot now supports testing functionality to simulate trades and run on a testnet. The following are the steps on how to set up the bot for testing:
 
-1. Fork the repository from GitHub.
-2. Install the necessary libraries with the Node package manager (npm):
-   ```
-   npm install
-   ```
-3. Create a `.env` file in the root directory and add your private key and Alchemy API key. You can use the `.env-sample` file as a reference. Here is an example of what the `.env` file should look like:
-   ```
-   PRIVATE_KEY=0xabc123
-   ALCHEMY_API_KEY=sxSQa_Vasdfasdfaqbqu-0abc
-   ```
-   Make sure to replace the example values with your actual private key and Alchemy API key.
-4. Edit the `mm.js` file to specify the tokens that you want to trade and the target price.
-5. Run `node mm.js` to start the bot.
+- Fork the repository from GitHub.
+- Install the necessary libraries with the Node package manager (npm).
+- Create a .env file and add your private key and Alchemy API key.
+- Update the `provider` variable in the `mm.js` file to use a testnet provider, such as Goerli testnet.
+- Add a flag to enable or disable test mode in the `mm.js` file.
+- Create a function to simulate trades for testing purposes in the `mm.js` file.
+- Run `node mm.js --test`
 
-The bot will start trading and will automatically buy and sell tokens in order to maintain the target price.
+The bot will simulate trades and run on a testnet for testing purposes.
 
-# Testing the Bot on the Goerli Testnet
-
-To test the bot on the Goerli testnet, follow these steps:
-
-1. Ensure you have Node.js installed on your system. You can download it from the official Node.js website.
-2. Open a terminal or command prompt.
-3. Navigate to the root directory of the project.
-4. Run the command `npm install` to install the dependencies listed in the `package.json` file.
-5. Create a `.env` file in the root directory and add your private key and Alchemy API key. You can use the `.env-sample` file as a reference.
-6. Edit the `mm.js` file to specify the tokens that you want to trade and the target price.
-7. Run `node mm.js` to start the bot.
-
-The bot will start trading on the Goerli testnet and will automatically buy and sell tokens in order to maintain the target price.
+Note the code is for demonstration purposes only and is not battle tested in a production environment.
