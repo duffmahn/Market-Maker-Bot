@@ -1,5 +1,6 @@
 const ethers = require('ethers');
 require("dotenv").config();
+const fs = require('fs');
 
 const wethAddress = '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6'; // goerli weth
 const wstethAddress = '0x0'; // placeholder for wsteth address, replace with actual address
@@ -13,7 +14,8 @@ const sellAmount = ethers.parseUnits('0.0005', 'ether');
 const tradeFrequency = 3600 * 1000; // ms (once per hour)
 
 // `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`
-const provider = new ethers.JsonRpcProvider(`https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`);
+// const provider = new ethers.JsonRpcProvider(`https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`);
+const provider = new ethers.JsonRpcProvider(`http://localhost:8545`);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY);
 const account = wallet.connect(provider);
 
@@ -78,8 +80,8 @@ const sellTokens = async () => {
   console.log(tx.hash);
 };
 
-const checkPrice = async () => {
-  const amountOut = await quoter.quoteExactInputSingle(wethAddress, wstethAddress, fee, buyAmount, 0);
+const checkPrice = async (historicalData, index) => {
+  const amountOut = historicalData[index].amountOut;
   const lidoRatio = await getLidoWrapUnwrapRatio();
   console.log(`Current Exchange Rate: ${amountOut.toString()}`);
   console.log(`Target Exchange Rate: ${targetAmountOut.toString()}`);
@@ -88,7 +90,16 @@ const checkPrice = async () => {
   if (amountOut > targetAmountOut * lidoRatio) sellTokens();
 };
 
-checkPrice();
-setInterval(() => {
-  checkPrice();
-}, tradeFrequency);
+const loadHistoricalData = (filePath) => {
+  const data = fs.readFileSync(filePath);
+  return JSON.parse(data);
+};
+
+const simulateTrading = async (historicalData) => {
+  for (let i = 0; i < historicalData.length; i++) {
+    await checkPrice(historicalData, i);
+  }
+};
+
+const historicalData = loadHistoricalData('historical_data.json');
+simulateTrading(historicalData);

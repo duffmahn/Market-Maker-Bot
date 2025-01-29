@@ -53,3 +53,55 @@ The bot now supports arbitraging the differences between the wsteth/weth pair an
 The bot will start trading and will automatically buy and sell tokens in order to arbitrage the differences between the wsteth/weth pair and the Lido wrap/unwrap ratio.
 
 Note the code is for demonstration purposes only and is not battle tested in a production environment.
+
+# Backtesting Functionality
+
+The bot now supports backtesting functionality to simulate historical trades. The following are the steps on how to set up the bot for backtesting:
+
+- Fork the repository from GitHub.
+- Install the necessary libraries with the Node package manager (npm).
+- Create a .env file and add your private key and Alchemy API key.
+- Update the `provider` variable in the `mm.js` file to read from a local file instead of using the Alchemy API.
+- Create a function to load historical data from a JSON or CSV file in the `mm.js` file.
+- Implement a simulation loop that iterates through the historical data set and executes the buy and sell logic in the `mm.js` file.
+- Modify the `checkPrice` function in the `mm.js` file to use historical data instead of fetching live data.
+- Track performance metrics, such as profit and loss, during the simulation in the `mm.js` file.
+- Run `node mm.js`
+
+The bot will simulate historical trades and track performance metrics during the simulation.
+
+# Optimization Logic
+
+The bot now supports optimization logic to adjust trading parameters dynamically. The following are the steps on how to set up the bot for optimization:
+
+- Fork the repository from GitHub.
+- Install the necessary libraries with the Node package manager (npm).
+- Create a .env file and add your private key and Alchemy API key.
+- Modify the `tradeFrequency` variable in the `mm.js` file to adjust how often the bot checks prices and executes trades.
+- Adjust the `buyAmount` and `sellAmount` variables in the `mm.js` file to optimize the size of each trade.
+- Replace the fixed `targetPrice` variable in the `mm.js` file with a dynamic target price based on a moving average or other indicators.
+- Update the `checkPrice` function in the `mm.js` file to calculate the dynamic target price and use it for buy and sell decisions.
+- Integrate slippage handling into the `buyTokens` and `sellTokens` functions in the `mm.js` file to ensure trades are executed within acceptable slippage tolerance.
+- Monitor gas prices using a gas price oracle or API and set a gas price limit in the `mm.js` file.
+- Run `node mm.js`
+
+The bot will dynamically adjust trading parameters to optimize performance.
+
+# Machine Learning-Based Strategies
+
+The bot now supports machine learning-based strategies to improve decision-making. The following are the steps on how to set up the bot for machine learning-based strategies:
+
+- Fork the repository from GitHub.
+- Install the necessary libraries with the Node package manager (npm).
+- Create a .env file and add your private key and Alchemy API key.
+- Create a historical data set for the tokens you want to trade, including price and volume information for the relevant time period.
+- Use machine learning algorithms to analyze historical data and predict future price movements.
+- Train a model using historical price and volume data to identify patterns and trends.
+- Integrate the trained model into the bot's decision-making process in the `mm.js` file.
+- Modify the bot's logic in the `mm.js` file to use the model's predictions for making buy and sell decisions.
+- Backtest the bot's performance with the integrated machine learning model using the historical data set.
+- Run `node mm.js`
+
+The bot will use machine learning-based strategies to improve its decision-making and overall performance.
+
+Note the code is for demonstration purposes only and is not battle tested in a production environment.
