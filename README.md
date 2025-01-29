@@ -44,3 +44,6 @@ const executeFlashLoan = async (amount, token, callback) => {
   await callback(tx); // Execute trade logic
   await tx.wait();
 };
+
+// Note: Conflicts need to be resolved in the code.
+// Note: The code needs to be improved.
