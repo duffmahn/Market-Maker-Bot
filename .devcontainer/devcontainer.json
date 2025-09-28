@@ -1,0 +1,45 @@
+{
+	"name": "Market Maker Bot Development",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+	
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.vscode-json",
+				"esbenp.prettier-vscode",
+				"ms-vscode.vscode-eslint",
+				"bradlc.vscode-tailwindcss",
+				"formulahendry.auto-rename-tag",
+				"christian-kohler.path-intellisense",
+				"ms-vscode.vscode-typescript-next"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"javascript.preferences.quoteStyle": "single",
+				"typescript.preferences.quoteStyle": "single"
+			}
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [3000, 8545],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/setup.sh",
+
+	// Configure environment variables
+	"containerEnv": {
+		"NODE_ENV": "development"
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "node",
+
+	// Features to add to the dev container
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	}
+}

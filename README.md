@@ -1,7 +1,19 @@
 # Uniswap V3 Market Maker Trading Bot
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/duffmahn/Market-Maker-Bot)
+
 Blog Post:
 https://jamesbachini.com/uniswap-market-maker-bot/
+
+## 🚀 Quick Start with GitHub Codespaces
+
+The easiest way to get started is using GitHub Codespaces:
+
+1. Click the **"Open in GitHub Codespaces"** badge above
+2. Wait for your development environment to load
+3. Follow the setup instructions in [CODESPACE_SETUP.md](./CODESPACE_SETUP.md)
+
+Your development environment will include Node.js, all dependencies, and helpful VS Code extensions pre-configured!
 
 
 The Uniswap market maker trading bot works by automatically buying and selling tokens in a liquidity pool in order to maintain a target price. The bot is programmed to buy tokens when the price falls below the target price, and to sell tokens when the price rises above the target price. This helps to keep the price of the tokens in the pool stable and balances liquidity on either side of the pool.
