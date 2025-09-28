@@ -1,4 +1,13 @@
 {
+  "name": "market-maker-bot",
+  "version": "1.0.0",
+  "description": "Uniswap V3 Market Maker Trading Bot",
+  "main": "mm.js",
+  "scripts": {
+    "start": "node mm.js",
+    "test": "echo 'Run: npm start to begin trading bot'",
+    "setup": "bash .devcontainer/setup.sh"
+  },
   "dependencies": {
     "dotenv": "^16.0.3",
     "ethers": "^6.3.0"
